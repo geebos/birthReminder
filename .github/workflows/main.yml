@@ -26,18 +26,23 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
+
+      - name: build
+        run: pip3 install -r requirements.txt
       
       - name: send_email
         run: python3 send_email.py
         env:
-          EMAIL_USER: ${{ secrets.USERNAME }}
-          EMAIL_PASS: ${{ secrets.PASSWORD }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       
       - name: check_email
         run: python3 check_email.py
         env:
           EMAIL_USER: ${{ secrets.USERNAME }}
           EMAIL_PASS: ${{ secrets.PASSWORD }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       
       - name: commit
         run: |
