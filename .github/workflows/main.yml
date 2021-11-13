@@ -30,14 +30,14 @@ jobs:
       - name: send_email
         run: python3 send_email.py
         env:
-          EMAIL_USER: ${{ email.USERNAME }}
-          EMAIL_PASS: ${{ email.PASSWORD }}
+          EMAIL_USER: ${{ secrets.USERNAME }}
+          EMAIL_PASS: ${{ secrets.PASSWORD }}
       
       - name: check_email
         run: python3 check_email.py
         env:
-          EMAIL_USER: ${{ email.USERNAME }}
-          EMAIL_PASS: ${{ email.PASSWORD }}
+          EMAIL_USER: ${{ secrets.USERNAME }}
+          EMAIL_PASS: ${{ secrets.PASSWORD }}
       
       - name: commit
         run: |
